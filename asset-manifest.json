@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/campers-adverts-api/static/css/main.2890bd27.css",
+    "main.js": "/campers-adverts-api/static/js/main.7fc3184c.js",
+    "static/js/453.b778d3b3.chunk.js": "/campers-adverts-api/static/js/453.b778d3b3.chunk.js",
+    "index.html": "/campers-adverts-api/index.html",
+    "main.2890bd27.css.map": "/campers-adverts-api/static/css/main.2890bd27.css.map",
+    "main.7fc3184c.js.map": "/campers-adverts-api/static/js/main.7fc3184c.js.map",
+    "453.b778d3b3.chunk.js.map": "/campers-adverts-api/static/js/453.b778d3b3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2890bd27.css",
+    "static/js/main.7fc3184c.js"
+  ]
+}
