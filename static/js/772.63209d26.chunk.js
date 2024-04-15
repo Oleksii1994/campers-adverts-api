@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcampers_adverts_api=self.webpackChunkcampers_adverts_api||[]).push([[772],{772:(e,s,a)=>{a.r(s),a.d(s,{default:()=>p});var r=a(579);const p=()=>(0,r.jsx)("p",{children:"AdvertsPage"})}}]);
+//# sourceMappingURL=772.63209d26.chunk.js.map
