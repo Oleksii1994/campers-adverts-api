@@ -1,5 +1,8 @@
+import { AdvertsList } from 'components/AdvertsList/AdvertsList';
+
 const AdvertsPage = () => {
-  return <p>AdvertsPage</p>;
+  return <AdvertsList />;
+  // <p>AdvertsPage</p>;
 };
 
 export default AdvertsPage;
