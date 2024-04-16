@@ -1,5 +1,20 @@
 import { createShortDescription, createPrice } from 'helpers/helpers';
 import Sprite from '../../img/symbol-defs.svg';
+import {
+  StyledCard,
+  CardInfoBox,
+  CardPhoto,
+  CardTitle,
+  PriceWrapper,
+  TitlePriceBox,
+  Price,
+  RatingLocationWrapper,
+  RatingBox,
+  LocationBox,
+  Description,
+  ShowMoreBtn,
+} from './AdvertItem.styled';
+
 export const AdvertItem = ({
   _id,
   gallery,
@@ -12,25 +27,24 @@ export const AdvertItem = ({
   details,
 }) => {
   return (
-    <li>
-      <div>
-        <img src={gallery[0]} alt={name} width="290" height="310" />
-      </div>
-      <div>
-        <div>
-          <h2>{name}</h2>
-          <div>
-            <p>{`€${createPrice(price)}`}</p>
-            <svg width="16" height="16">
+    <StyledCard>
+      <CardPhoto src={gallery[0]} alt={name} width="290" />
+
+      <CardInfoBox>
+        <TitlePriceBox>
+          <CardTitle>{name}</CardTitle>
+          <PriceWrapper>
+            <Price>{`€${createPrice(price)}`}</Price>
+            <svg width="24" height="24">
               <use
                 href={`${Sprite}#icon-heart`}
                 style={{ fill: '#FFFFFF', stroke: '#101828' }}
               ></use>
             </svg>
-          </div>
-        </div>
-        <div>
-          <div>
+          </PriceWrapper>
+        </TitlePriceBox>
+        <RatingLocationWrapper>
+          <RatingBox>
             <svg width="16" height="16">
               <use
                 href={`${Sprite}#icon-star`}
@@ -41,8 +55,8 @@ export const AdvertItem = ({
               {rating}
               {reviews.length.toString()}
             </p>
-          </div>
-          <div>
+          </RatingBox>
+          <LocationBox>
             <svg width="16" height="16">
               <use
                 href={`${Sprite}#icon-map`}
@@ -50,11 +64,10 @@ export const AdvertItem = ({
               ></use>
             </svg>
             <p>{location}</p>
-          </div>
-        </div>
-        <div>
-          <p>{createShortDescription(description)}</p>
-        </div>
+          </LocationBox>
+        </RatingLocationWrapper>
+
+        <Description>{createShortDescription(description)}</Description>
 
         {/* <ul>
           {details.map(({}) => (
@@ -64,8 +77,8 @@ export const AdvertItem = ({
             </li>
           ))}
         </ul> */}
-        <button type="button">Show more</button>
-      </div>
-    </li>
+        <ShowMoreBtn type="button">Show more</ShowMoreBtn>
+      </CardInfoBox>
+    </StyledCard>
   );
 };

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Oleksii1994.github.io/campers-adverts-api/",
   "dependencies": {
+    "@fontsource/inter": "^5.0.17",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
