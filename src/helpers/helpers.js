@@ -1,7 +1,21 @@
 export const createShortDescription = text => {
-  return text.split(' ').slice(0, 10).join(' ').concat(' ...');
+  return text.split(' ').slice(0, 8).join(' ').concat(' ...');
+};
+
+export const createShorterTitle = title => {
+  return title.split(' ').slice(0, 4).join(' ');
 };
 
 export const createPrice = price => {
   return price.toString().concat('.00');
+};
+
+export const checkDetailsInfo = (key, value) => {
+  if (key === 'transmission' || key === 'engine') {
+    return `${value}`;
+  } else if (key === 'airConditioner' || key === 'kitchen') {
+    return `${key}`;
+  } else {
+    return `${value} ${key}`;
+  }
 };

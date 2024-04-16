@@ -1,4 +1,9 @@
-import { createShortDescription, createPrice } from 'helpers/helpers';
+import {
+  createShortDescription,
+  createShorterTitle,
+  createPrice,
+  checkDetailsInfo,
+} from 'helpers/helpers';
 import Sprite from '../../img/symbol-defs.svg';
 import {
   StyledCard,
@@ -13,10 +18,13 @@ import {
   LocationBox,
   Description,
   ShowMoreBtn,
+  FavoritesHeartBtn,
+  DetailsList,
+  DetailItem,
+  DetailText,
 } from './AdvertItem.styled';
 
 export const AdvertItem = ({
-  _id,
   gallery,
   name,
   price,
@@ -25,22 +33,42 @@ export const AdvertItem = ({
   location,
   description,
   details,
+  adults,
+  transmission,
+  engine,
 }) => {
+  const normalizedInfoDetails = () => {
+    return {
+      adults,
+      transmission,
+      engine: engine,
+      airConditioner: details.airConditioner,
+      kitchen: details.kitchen,
+      beds: details.beds,
+    };
+  };
+
+  const detailsArray = Object.entries(normalizedInfoDetails());
+  console.log(detailsArray);
+
   return (
     <StyledCard>
       <CardPhoto src={gallery[0]} alt={name} width="290" />
 
       <CardInfoBox>
         <TitlePriceBox>
-          <CardTitle>{name}</CardTitle>
+          <CardTitle>{createShorterTitle(name)}</CardTitle>
           <PriceWrapper>
             <Price>{`€${createPrice(price)}`}</Price>
-            <svg width="24" height="24">
-              <use
-                href={`${Sprite}#icon-heart`}
-                style={{ fill: '#FFFFFF', stroke: '#101828' }}
-              ></use>
-            </svg>
+            <FavoritesHeartBtn type="button" className="favorites-heart-btn">
+              <svg width="24" height="24">
+                <use
+                  className="fav-btn-use"
+                  href={`${Sprite}#icon-heart`}
+                  style={{ fill: '#FFFFFF', stroke: '#101828' }}
+                ></use>
+              </svg>
+            </FavoritesHeartBtn>
           </PriceWrapper>
         </TitlePriceBox>
         <RatingLocationWrapper>
@@ -53,7 +81,7 @@ export const AdvertItem = ({
             </svg>
             <p>
               {rating}
-              {reviews.length.toString()}
+              {`(${reviews.length.toString()} Reviews)`}
             </p>
           </RatingBox>
           <LocationBox>
@@ -69,14 +97,18 @@ export const AdvertItem = ({
 
         <Description>{createShortDescription(description)}</Description>
 
-        {/* <ul>
-          {details.map(({}) => (
-            <li>
-              <svg width="32" height="22"><use></use></svg>
-              <p>{}</p>
-            </li>
-          ))}
-        </ul> */}
+        <DetailsList>
+          {detailsArray.map(([key, value]) => {
+            return (
+              <DetailItem key={key}>
+                <svg width="20" height="20">
+                  <use href={`${Sprite}#icon-${key}`} />
+                </svg>
+                <DetailText>{`${checkDetailsInfo(key, value)}`}</DetailText>
+              </DetailItem>
+            );
+          })}
+        </DetailsList>
         <ShowMoreBtn type="button">Show more</ShowMoreBtn>
       </CardInfoBox>
     </StyledCard>

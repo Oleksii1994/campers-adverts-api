@@ -46,6 +46,16 @@ export const Price = styled.p`
   line-height: 125%;
 `;
 
+export const FavoritesHeartBtn = styled.button`
+  border: none;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+`;
+
 export const RatingLocationWrapper = styled.div`
   display: flex;
   gap: 16px;
@@ -56,11 +66,13 @@ export const RatingLocationWrapper = styled.div`
 export const RatingBox = styled.div`
   display: flex;
   gap: 4px;
+  align-items: center;
 `;
 
 export const LocationBox = styled.div`
   display: flex;
   gap: 4px;
+  align-items: center;
 `;
 
 export const Description = styled.p`
@@ -73,6 +85,7 @@ export const Description = styled.p`
 `;
 
 export const ShowMoreBtn = styled.button`
+  cursor: pointer;
   border: none;
   border-radius: 200px;
   padding: 16px 40px;
@@ -81,9 +94,40 @@ export const ShowMoreBtn = styled.button`
 
   background-color: #e44848;
 
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: -0.01em;
   color: #ffffff;
+
+  &:hover {
+    background-color: #d84343;
+  }
+`;
+
+export const DetailsList = styled.ul`
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+`;
+
+export const DetailItem = styled.li`
+  display: flex;
+  gap: 8px;
+
+  border-radius: 100px;
+  padding: 12px 18px;
+  // width: 143px;
+  height: 44px;
+
+  background-color: #f2f4f7;
+`;
+
+export const DetailText = styled.p`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
 `;

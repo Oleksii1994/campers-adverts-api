@@ -30,6 +30,9 @@ export const AdvertsList = () => {
           location,
           description,
           details,
+          adults,
+          transmission,
+          engine,
         }) => (
           <AdvertItem
             key={_id}
@@ -40,6 +43,10 @@ export const AdvertsList = () => {
             reviews={reviews}
             location={location}
             description={description}
+            details={details}
+            adults={adults}
+            transmission={transmission}
+            engine={engine}
           />
         )
       )}
