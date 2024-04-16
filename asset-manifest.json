@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/campers-adverts-api/static/css/main.c713add7.css",
-    "main.js": "/campers-adverts-api/static/js/main.106ff780.js",
+    "main.css": "/campers-adverts-api/static/css/main.1187cbf4.css",
+    "main.js": "/campers-adverts-api/static/js/main.41127ae0.js",
     "static/js/264.6e665f8f.chunk.js": "/campers-adverts-api/static/js/264.6e665f8f.chunk.js",
-    "static/js/559.88ae0908.chunk.js": "/campers-adverts-api/static/js/559.88ae0908.chunk.js",
+    "static/js/692.b78ee676.chunk.js": "/campers-adverts-api/static/js/692.b78ee676.chunk.js",
     "static/js/62.80025405.chunk.js": "/campers-adverts-api/static/js/62.80025405.chunk.js",
     "static/media/symbol-defs.svg": "/campers-adverts-api/static/media/symbol-defs.3ca1c1a0fcd6f1e2f0a8896c38a1a169.svg",
     "index.html": "/campers-adverts-api/index.html",
-    "main.c713add7.css.map": "/campers-adverts-api/static/css/main.c713add7.css.map",
-    "main.106ff780.js.map": "/campers-adverts-api/static/js/main.106ff780.js.map",
+    "main.1187cbf4.css.map": "/campers-adverts-api/static/css/main.1187cbf4.css.map",
+    "main.41127ae0.js.map": "/campers-adverts-api/static/js/main.41127ae0.js.map",
     "264.6e665f8f.chunk.js.map": "/campers-adverts-api/static/js/264.6e665f8f.chunk.js.map",
-    "559.88ae0908.chunk.js.map": "/campers-adverts-api/static/js/559.88ae0908.chunk.js.map",
+    "692.b78ee676.chunk.js.map": "/campers-adverts-api/static/js/692.b78ee676.chunk.js.map",
     "62.80025405.chunk.js.map": "/campers-adverts-api/static/js/62.80025405.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c713add7.css",
-    "static/js/main.106ff780.js"
+    "static/css/main.1187cbf4.css",
+    "static/js/main.41127ae0.js"
   ]
 }
