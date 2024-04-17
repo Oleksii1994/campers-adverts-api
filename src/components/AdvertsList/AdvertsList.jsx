@@ -34,7 +34,7 @@ export const AdvertsList = () => {
   };
 
   useEffect(() => {
-    const favoritesLS = JSON.parse(localStorage.getItem('favorites'));
+    const favoritesLS = JSON.parse(localStorage.getItem('favorites')) || [];
 
     if (favoritesLS.length > 0) {
       return;
@@ -48,7 +48,7 @@ export const AdvertsList = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (advertsArr.length) {
+    if (advertsArr.length > 0) {
       setDataToRender(advertsArr.slice(0, countData));
       setLoadMoreBtnShown(advertsArr.length > countData);
     }
