@@ -15,6 +15,7 @@ export const AdvertsList = () => {
   const [dataToRender, setDataToRender] = useState([]);
   const [countData, setCountData] = useState(4);
   const [loadMoreBtnShown, setLoadMoreBtnShown] = useState(false);
+  // const [favorites, setFavorites] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -31,6 +32,16 @@ export const AdvertsList = () => {
       setLoadMoreBtnShown(newCount < advertsArr.length);
     }
   };
+
+  useEffect(() => {
+    const favoritesLS = JSON.parse(localStorage.getItem('favorites'));
+
+    if (favoritesLS.length > 0) {
+      return;
+    }
+
+    localStorage.setItem('favorites', JSON.stringify([]));
+  }, []);
 
   useEffect(() => {
     dispatch(fetchAdverts());
@@ -63,6 +74,7 @@ export const AdvertsList = () => {
           }) => (
             <AdvertItem
               key={_id}
+              id={_id}
               gallery={gallery}
               name={name}
               price={price}

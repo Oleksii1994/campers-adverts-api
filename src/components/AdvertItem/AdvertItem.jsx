@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
 import {
   createShortDescription,
   createShorterTitle,
   createPrice,
   checkDetailsInfo,
 } from 'helpers/helpers';
+
 import Sprite from '../../img/symbol-defs.svg';
 import {
   StyledCard,
@@ -23,8 +25,10 @@ import {
   DetailItem,
   DetailText,
 } from './AdvertItem.styled';
+import { Notify } from 'notiflix';
 
 export const AdvertItem = ({
+  id,
   gallery,
   name,
   price,
@@ -37,6 +41,8 @@ export const AdvertItem = ({
   transmission,
   engine,
 }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const normalizedInfoDetails = () => {
     return {
       adults,
@@ -49,7 +55,50 @@ export const AdvertItem = ({
   };
 
   const detailsArray = Object.entries(normalizedInfoDetails());
-  console.log(detailsArray);
+
+  const handleAddToFavorites = id => {
+    const arrayFromLS = JSON.parse(localStorage.getItem('favorites'));
+    // console.log(arrayFromLS);
+
+    const advertObj = {
+      id,
+      gallery,
+      name,
+      price,
+      rating,
+      reviews,
+      location,
+      description,
+      details,
+      adults,
+      transmission,
+      engine,
+      favorite: !isFavorite,
+    };
+
+    const index = arrayFromLS.findIndex(item => item.id === advertObj.id);
+    console.log('Current ID:', advertObj.id);
+    console.log('Index in array:', index);
+    console.log('Array before operation:', arrayFromLS);
+
+    if (index !== -1) {
+      Notify.success('Advert was deleted from your favorites list');
+      const newArray = arrayFromLS.filter(item => item.id !== advertObj.id);
+      localStorage.setItem('favorites', JSON.stringify(newArray));
+      setIsFavorite(false);
+      return;
+    }
+
+    arrayFromLS.push(advertObj);
+    setIsFavorite(true);
+    localStorage.setItem('favorites', JSON.stringify(arrayFromLS));
+    // console.log(advertObj);
+  };
+
+  useEffect(() => {
+    const arrayFromLS = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFavorite(arrayFromLS.some(item => item.id === id));
+  }, [id]);
 
   return (
     <StyledCard>
@@ -60,7 +109,11 @@ export const AdvertItem = ({
           <CardTitle>{createShorterTitle(name)}</CardTitle>
           <PriceWrapper>
             <Price>{`€${createPrice(price)}`}</Price>
-            <FavoritesHeartBtn type="button" className="favorites-heart-btn">
+            <FavoritesHeartBtn
+              type="button"
+              className="favorites-heart-btn"
+              onClick={() => handleAddToFavorites(id)}
+            >
               <svg width="24" height="24">
                 <use
                   className="fav-btn-use"
