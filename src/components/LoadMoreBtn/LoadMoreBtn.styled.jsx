@@ -8,10 +8,15 @@ export const LoadMoreButton = styled.button`
   height: 56px;
 
   background-color: transparent;
+  cursor: pointer;
 
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: -0.01em;
+
+  &:hover {
+    border-color: #e44848;
+  }
 `;
