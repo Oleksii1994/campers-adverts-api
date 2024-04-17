@@ -23,13 +23,14 @@ export const AdvertsList = () => {
 
   const handleLoadMore = () => {
     const newCount = countData + 4;
+    setDataToRender(advertsArr.slice(0, newCount));
+    setCountData(newCount);
+
     if (newCount >= advertsArr.length) {
       setLoadMoreBtnShown(false);
       Notify.info("Oops, there's no more adverts");
     } else {
-      setDataToRender(advertsArr.slice(0, newCount));
-      setCountData(newCount);
-      setLoadMoreBtnShown(newCount < advertsArr.length);
+      setLoadMoreBtnShown(newCount <= advertsArr.length);
     }
   };
 
@@ -50,7 +51,7 @@ export const AdvertsList = () => {
   useEffect(() => {
     if (advertsArr.length > 0) {
       setDataToRender(advertsArr.slice(0, countData));
-      setLoadMoreBtnShown(advertsArr.length > countData);
+      setLoadMoreBtnShown(advertsArr.length >= countData);
     }
   }, [advertsArr, countData]);
 
