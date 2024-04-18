@@ -39,7 +39,7 @@ export const AdvertsList = () => {
     if (pathname === '/favorites') {
       setDataToRender(favorites);
     }
-  }, [dataToRender]);
+  }, [favorites, pathname]);
 
   useEffect(() => {
     dispatch(fetchAdverts());
