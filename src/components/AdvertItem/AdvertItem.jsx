@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   createShortDescription,
   createShorterTitle,
@@ -28,7 +29,7 @@ import {
 import { Notify } from 'notiflix';
 
 export const AdvertItem = ({
-  id,
+  _id,
   gallery,
   name,
   price,
@@ -42,6 +43,7 @@ export const AdvertItem = ({
   engine,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { pathname } = useLocation();
 
   const normalizedInfoDetails = () => {
     return {
@@ -56,12 +58,11 @@ export const AdvertItem = ({
 
   const detailsArray = Object.entries(normalizedInfoDetails());
 
-  const handleAddToFavorites = id => {
+  const handleAddRemoveFavorites = _id => {
     const arrayFromLS = JSON.parse(localStorage.getItem('favorites'));
-    // console.log(arrayFromLS);
 
     const advertObj = {
-      id,
+      _id,
       gallery,
       name,
       price,
@@ -76,14 +77,14 @@ export const AdvertItem = ({
       favorite: !isFavorite,
     };
 
-    const index = arrayFromLS.findIndex(item => item.id === advertObj.id);
-    console.log('Current ID:', advertObj.id);
+    const index = arrayFromLS.findIndex(item => item._id === advertObj._id);
+    console.log('Current ID:', advertObj._id);
     console.log('Index in array:', index);
     console.log('Array before operation:', arrayFromLS);
 
     if (index !== -1) {
       Notify.success('Advert was deleted from your favorites list');
-      const newArray = arrayFromLS.filter(item => item.id !== advertObj.id);
+      const newArray = arrayFromLS.filter(item => item._id !== advertObj._id);
       localStorage.setItem('favorites', JSON.stringify(newArray));
       setIsFavorite(false);
       return;
@@ -92,13 +93,12 @@ export const AdvertItem = ({
     arrayFromLS.push(advertObj);
     setIsFavorite(true);
     localStorage.setItem('favorites', JSON.stringify(arrayFromLS));
-    // console.log(advertObj);
   };
 
   useEffect(() => {
     const arrayFromLS = JSON.parse(localStorage.getItem('favorites')) || [];
-    setIsFavorite(arrayFromLS.some(item => item.id === id));
-  }, [id]);
+    setIsFavorite(arrayFromLS.some(item => item._id === _id));
+  }, [_id]);
 
   return (
     <StyledCard>
@@ -112,7 +112,7 @@ export const AdvertItem = ({
             <FavoritesHeartBtn
               type="button"
               className="favorites-heart-btn"
-              onClick={() => handleAddToFavorites(id)}
+              onClick={() => handleAddRemoveFavorites(_id)}
             >
               <svg width="24" height="24">
                 <use
