@@ -43,7 +43,7 @@ export const AdvertItem = ({
   engine,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
   const normalizedInfoDetails = () => {
     return {
