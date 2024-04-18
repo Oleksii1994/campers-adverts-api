@@ -52,7 +52,7 @@ export const AdvertsList = () => {
     } else if (pathname === '/favorites') {
       setDataToRender(favorites);
     }
-  }, [advertsArr, countData]);
+  }, [advertsArr, countData, favorites, pathname]);
 
   return (
     <ListAdvertsContainer>
