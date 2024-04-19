@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import {
   selectAdvertsArr,
   // selectIsLoading,
@@ -16,7 +17,6 @@ export const AdvertsList = () => {
   const [dataToRender, setDataToRender] = useState([]);
   const [countData, setCountData] = useState(4);
   const [loadMoreBtnShown, setLoadMoreBtnShown] = useState(false);
-  const favorites = JSON.parse(localStorage.getItem('favorites'));
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
@@ -36,23 +36,24 @@ export const AdvertsList = () => {
   };
 
   useEffect(() => {
-    if (pathname === '/favorites') {
-      setDataToRender(favorites);
-    }
-  }, [favorites, pathname]);
-
-  useEffect(() => {
     dispatch(fetchAdverts());
   }, [dispatch]);
 
   useEffect(() => {
-    if (advertsArr.length > 0 && pathname === '/adverts') {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setDataToRender(
+      pathname === '/favorites'
+        ? storedFavorites
+        : advertsArr.slice(0, countData)
+    );
+  }, [pathname, countData, advertsArr]);
+
+  useEffect(() => {
+    if (pathname === '/adverts' && advertsArr.length > 0) {
       setDataToRender(advertsArr.slice(0, countData));
-      setLoadMoreBtnShown(advertsArr.length >= countData);
-    } else if (pathname === '/favorites') {
-      setDataToRender(favorites);
+      setLoadMoreBtnShown(advertsArr.length > countData);
     }
-  }, [advertsArr, countData, favorites, pathname]);
+  }, [pathname, advertsArr, countData]);
 
   return (
     <ListAdvertsContainer>
