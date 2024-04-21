@@ -38,6 +38,10 @@ export const AdvertsList = () => {
   const updateFavorites = () => {
     const updatedFavorites =
       JSON.parse(localStorage.getItem('favorites')) || [];
+
+    if (pathname === '/adverts') {
+      return;
+    }
     setDataToRender(updatedFavorites);
   };
 
