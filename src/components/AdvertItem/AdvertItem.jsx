@@ -26,7 +26,7 @@ import {
   DetailItem,
   DetailText,
 } from './AdvertItem.styled';
-import { Notify } from 'notiflix';
+// import { Notify } from 'notiflix';
 
 export const AdvertItem = ({
   _id,
@@ -41,6 +41,7 @@ export const AdvertItem = ({
   adults,
   transmission,
   engine,
+  onUpdateFavorites,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   // const { pathname } = useLocation();
@@ -83,16 +84,17 @@ export const AdvertItem = ({
     console.log('Array before operation:', arrayFromLS);
 
     if (index !== -1) {
-      Notify.success('Advert was deleted from your favorites list');
       const newArray = arrayFromLS.filter(item => item._id !== advertObj._id);
       localStorage.setItem('favorites', JSON.stringify(newArray));
       setIsFavorite(false);
+      onUpdateFavorites(); // Повідомляємо зміни
       return;
     }
 
     arrayFromLS.push(advertObj);
     setIsFavorite(true);
     localStorage.setItem('favorites', JSON.stringify(arrayFromLS));
+    onUpdateFavorites();
   };
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import {
@@ -35,9 +35,17 @@ export const AdvertsList = () => {
     }
   };
 
+  const updateFavorites = () => {
+    const updatedFavorites =
+      JSON.parse(localStorage.getItem('favorites')) || [];
+    setDataToRender(updatedFavorites);
+  };
+
   useEffect(() => {
-    dispatch(fetchAdverts());
-  }, [dispatch]);
+    if (pathname === '/adverts') {
+      dispatch(fetchAdverts());
+    }
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -87,6 +95,7 @@ export const AdvertsList = () => {
               adults={adults}
               transmission={transmission}
               engine={engine}
+              onUpdateFavorites={updateFavorites}
             />
           )
         )}
