@@ -22,21 +22,21 @@ export const AdvertsList = () => {
 
   const adverts = useSelector(selectAdvertsArr);
 
-  const advertsArr =
-    pathname === '/adverts'
-      ? adverts
-      : JSON.parse(localStorage.getItem('favorites'));
+  // const advertsArr =
+  //   pathname === '/adverts'
+  //     ? adverts
+  //     : JSON.parse(localStorage.getItem('favorites'));
 
   const handleLoadMore = () => {
     const newCount = countData + 4;
-    setDataToRender(advertsArr.slice(0, newCount));
+    setDataToRender(adverts.slice(0, newCount));
     setCountData(newCount);
 
-    if (newCount >= advertsArr.length) {
+    if (newCount >= adverts.length) {
       setLoadMoreBtnShown(false);
       Notify.info("Oops, there's no more adverts");
     } else {
-      setLoadMoreBtnShown(newCount <= advertsArr.length);
+      setLoadMoreBtnShown(newCount <= adverts.length);
     }
   };
 
@@ -58,6 +58,10 @@ export const AdvertsList = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const advertsArr =
+      pathname === '/adverts'
+        ? adverts
+        : JSON.parse(localStorage.getItem('favorites'));
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setDataToRender(
       pathname === '/favorites'
@@ -65,15 +69,19 @@ export const AdvertsList = () => {
         : advertsArr.slice(0, countData)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [advertsArr, countData]);
+  }, [countData]);
 
   useEffect(() => {
+    const advertsArr =
+      pathname === '/adverts'
+        ? adverts
+        : JSON.parse(localStorage.getItem('favorites'));
     if (pathname === '/adverts' && advertsArr.length > 0) {
       setDataToRender(advertsArr.slice(0, countData));
       setLoadMoreBtnShown(advertsArr.length > countData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [advertsArr, countData]);
+  }, [countData]);
 
   return (
     <ListAdvertsContainer>
