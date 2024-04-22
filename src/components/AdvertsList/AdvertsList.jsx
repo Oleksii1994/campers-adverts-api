@@ -20,7 +20,12 @@ export const AdvertsList = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  const advertsArr = useSelector(selectAdvertsArr);
+  const adverts = useSelector(selectAdvertsArr);
+
+  const advertsArr =
+    pathname === '/adverts'
+      ? adverts
+      : JSON.parse(localStorage.getItem('favorites'));
 
   const handleLoadMore = () => {
     const newCount = countData + 4;
@@ -49,7 +54,8 @@ export const AdvertsList = () => {
     if (pathname === '/adverts') {
       dispatch(fetchAdverts());
     }
-  }, [dispatch, pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -58,14 +64,16 @@ export const AdvertsList = () => {
         ? storedFavorites
         : advertsArr.slice(0, countData)
     );
-  }, [pathname, countData, advertsArr]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [advertsArr, countData]);
 
   useEffect(() => {
     if (pathname === '/adverts' && advertsArr.length > 0) {
       setDataToRender(advertsArr.slice(0, countData));
       setLoadMoreBtnShown(advertsArr.length > countData);
     }
-  }, [pathname, advertsArr, countData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [advertsArr, countData]);
 
   return (
     <ListAdvertsContainer>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   createShortDescription,
   createShorterTitle,
@@ -20,12 +21,13 @@ import {
   RatingBox,
   LocationBox,
   Description,
-  ShowMoreBtn,
   FavoritesHeartBtn,
   DetailsList,
   DetailItem,
   DetailText,
 } from './AdvertItem.styled';
+import { Modal } from '../ModalInfo/ModalInfo';
+import { ShowMoreBtn } from 'components/ShowMoreBtn/ShowMoreBtn';
 // import { Notify } from 'notiflix';
 
 export const AdvertItem = ({
@@ -43,8 +45,28 @@ export const AdvertItem = ({
   engine,
   onUpdateFavorites,
 }) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
-  // const { pathname } = useLocation();
+  const [modalShow, setModalShow] = useState(false);
+
+  const closeModal = () => {
+    setModalShow(!modalShow);
+    const currentPage = pathname.split('/').slice(0, 2).join('/');
+    if (currentPage === '/adverts') {
+      navigate('/adverts');
+    } else if (currentPage === '/favorites') {
+      navigate('/favorites');
+    }
+  };
+
+  const handleShowMore = () => {
+    const basePath = pathname.includes('/favorites')
+      ? '/favorites'
+      : '/adverts';
+    navigate(`${basePath}/${_id}`);
+    setModalShow(true);
+  };
 
   const normalizedInfoDetails = () => {
     return {
@@ -79,15 +101,12 @@ export const AdvertItem = ({
     };
 
     const index = arrayFromLS.findIndex(item => item._id === advertObj._id);
-    console.log('Current ID:', advertObj._id);
-    console.log('Index in array:', index);
-    console.log('Array before operation:', arrayFromLS);
 
     if (index !== -1) {
       const newArray = arrayFromLS.filter(item => item._id !== advertObj._id);
       localStorage.setItem('favorites', JSON.stringify(newArray));
       setIsFavorite(false);
-      onUpdateFavorites(); // Повідомляємо зміни
+      onUpdateFavorites();
       return;
     }
 
@@ -164,7 +183,12 @@ export const AdvertItem = ({
             );
           })}
         </DetailsList>
-        <ShowMoreBtn type="button">Show more</ShowMoreBtn>
+        <ShowMoreBtn onClick={handleShowMore} />
+        <Modal show={modalShow} onClose={closeModal} id={_id}>
+          <h2>{name}</h2>
+          <p>{description}</p>
+          {/* Інші деталі camper */}
+        </Modal>
       </CardInfoBox>
     </StyledCard>
   );
