@@ -69,7 +69,7 @@ export const AdvertsList = () => {
         : advertsArr.slice(0, countData)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countData]);
+  }, [adverts, countData]);
 
   useEffect(() => {
     const advertsArr =
@@ -81,7 +81,7 @@ export const AdvertsList = () => {
       setLoadMoreBtnShown(advertsArr.length > countData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countData]);
+  }, [adverts, countData]);
 
   return (
     <ListAdvertsContainer>
