@@ -51,6 +51,13 @@ export const AdvertsList = () => {
   };
 
   useEffect(() => {
+    const storageFavorites = JSON.parse(localStorage.getItem('favorites'));
+    if (!storageFavorites) {
+      localStorage.setItem('favorites', JSON.stringify([]));
+    }
+  });
+
+  useEffect(() => {
     if (pathname === '/adverts') {
       dispatch(fetchAdverts());
     }
