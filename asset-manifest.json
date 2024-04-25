@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/campers-adverts-api/static/css/main.469d40eb.css",
-    "main.js": "/campers-adverts-api/static/js/main.a89bef36.js",
+    "main.css": "/campers-adverts-api/static/css/main.7b89d9db.css",
+    "main.js": "/campers-adverts-api/static/js/main.a29e16c1.js",
     "static/js/264.6e665f8f.chunk.js": "/campers-adverts-api/static/js/264.6e665f8f.chunk.js",
-    "static/js/772.a83ffdd6.chunk.js": "/campers-adverts-api/static/js/772.a83ffdd6.chunk.js",
-    "static/js/62.ddbae1c7.chunk.js": "/campers-adverts-api/static/js/62.ddbae1c7.chunk.js",
-    "static/media/symbol-defs.svg": "/campers-adverts-api/static/media/symbol-defs.27169c109187cc41b9a1ec10809728f1.svg",
+    "static/js/772.4845e0ab.chunk.js": "/campers-adverts-api/static/js/772.4845e0ab.chunk.js",
+    "static/js/62.8dbed837.chunk.js": "/campers-adverts-api/static/js/62.8dbed837.chunk.js",
+    "static/media/symbol-defs.svg": "/campers-adverts-api/static/media/symbol-defs.9f1501c6d293fd3cee951f28217e900b.svg",
     "index.html": "/campers-adverts-api/index.html",
-    "main.469d40eb.css.map": "/campers-adverts-api/static/css/main.469d40eb.css.map",
-    "main.a89bef36.js.map": "/campers-adverts-api/static/js/main.a89bef36.js.map",
+    "main.7b89d9db.css.map": "/campers-adverts-api/static/css/main.7b89d9db.css.map",
+    "main.a29e16c1.js.map": "/campers-adverts-api/static/js/main.a29e16c1.js.map",
     "264.6e665f8f.chunk.js.map": "/campers-adverts-api/static/js/264.6e665f8f.chunk.js.map",
-    "772.a83ffdd6.chunk.js.map": "/campers-adverts-api/static/js/772.a83ffdd6.chunk.js.map",
-    "62.ddbae1c7.chunk.js.map": "/campers-adverts-api/static/js/62.ddbae1c7.chunk.js.map"
+    "772.4845e0ab.chunk.js.map": "/campers-adverts-api/static/js/772.4845e0ab.chunk.js.map",
+    "62.8dbed837.chunk.js.map": "/campers-adverts-api/static/js/62.8dbed837.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.469d40eb.css",
-    "static/js/main.a89bef36.js"
+    "static/css/main.7b89d9db.css",
+    "static/js/main.a29e16c1.js"
   ]
 }
