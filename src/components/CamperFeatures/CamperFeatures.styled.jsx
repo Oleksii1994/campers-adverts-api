@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
-export const FeaturesInfoBox = styled.div`
+export const FeaturesContainer = styled.div`
+  display: flex;
+  gap: 24px;
   padding-top: 44px;
+`;
+
+export const FeaturesInfoBox = styled.div`
+  width: 448px;
 `;
 
 export const Title = styled.h2`
