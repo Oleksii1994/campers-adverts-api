@@ -13,7 +13,7 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import { AdvertsList } from './AdvertsList/AdvertsList';
-import { Modal } from './ModalInfo/ModalInfo';
+// import { Modal } from './ModalInfo/ModalInfo';
 // import { fetchAdverts } from '../redux/operations';
 
 const HomePage = lazy(() => import('../pages/Home.jsx'));
@@ -36,20 +36,20 @@ export const App = () => {
         <Route index element={<HomePage />} />
         <Route path="/adverts" element={<AdvertsPage />}>
           <Route index element={<AdvertsList />} />
-          <Route path=":id" element={<Modal />}>
-            {/* <Route path="features" element={<CamperFeatures />} />
+          {/* <Route path=":id" element={<Modal />}> */}
+          {/* <Route path="features" element={<CamperFeatures />} />
             <Route path="reviews" element={<CamperReviews />} /> */}
-          </Route>
         </Route>
+        {/* </Route> */}
         <Route path="/favorites" element={<FavoritesPage />}>
           <Route index element={<AdvertsList />} />
-          <Route path=":id" element={<Modal />}>
-            {/* <Route path="features" element={<CamperFeatures />} />
+          {/* <Route path=":id" element={<Modal />}> */}
+          {/* <Route path="features" element={<CamperFeatures />} />
             <Route path="reviews" element={<CamperReviews />} /> */}
-          </Route>
         </Route>
-        <Route path="*" element={<HomePage />} />
       </Route>
+      <Route path="*" element={<HomePage />} />
+      {/* </Route> */}
     </Routes>
   );
 };

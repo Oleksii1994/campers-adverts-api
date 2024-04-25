@@ -1,19 +1,45 @@
 import { ModalBackdrop, ModalContent, CloseButton } from './ModalInfo.styled';
-// import { useParams } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { selectAdvertsArr } from '../../redux/selectors';
-// import { fetchAdverts } from '../../redux/operations';
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
+import Sprite from '../../img/symbol-defs.svg';
 
 export const Modal = ({ show, onClose, children }) => {
+  useEffect(() => {
+    if (show) {
+      // Додаємо `overflow: hidden` до <body> коли модалка відкрита
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Видаляємо `overflow: hidden` з <body>, коли модалка закрита
+      document.body.style.overflow = 'visible';
+    }
+
+    const handleKeyDown = event => {
+      if (event.keyCode === 27 && show) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'visible';
+    };
+  }, [show, onClose]);
+
   if (!show) return null;
 
-  return (
+  return createPortal(
     <ModalBackdrop onClick={onClose}>
       <ModalContent onClick={e => e.stopPropagation()}>
-        <CloseButton onClick={onClose}>&times;</CloseButton>
+        <CloseButton onClick={onClose}>
+          <svg width="20" height="20">
+            <use href={`${Sprite}#icon-close`}></use>
+          </svg>
+        </CloseButton>
         {children}
       </ModalContent>
-    </ModalBackdrop>
+    </ModalBackdrop>,
+    document.getElementById('root-modal')
   );
 };

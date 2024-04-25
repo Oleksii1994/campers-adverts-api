@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+
 import {
   createShortDescription,
   createShorterTitle,
@@ -9,6 +8,7 @@ import {
 } from 'helpers/helpers';
 
 import Sprite from '../../img/symbol-defs.svg';
+import { ProductInfo } from 'components/ProductInfo/ProductInfo';
 import {
   StyledCard,
   CardInfoBox,
@@ -39,32 +39,27 @@ export const AdvertItem = ({
   reviews,
   location,
   description,
+  children,
+  form,
+  length,
+  width,
+  height,
+  tank,
+  consumption,
   details,
   adults,
   transmission,
   engine,
   onUpdateFavorites,
 }) => {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
-  const closeModal = () => {
+  const closeModal = e => {
     setModalShow(!modalShow);
-    const currentPage = pathname.split('/').slice(0, 2).join('/');
-    if (currentPage === '/adverts') {
-      navigate('/adverts');
-    } else if (currentPage === '/favorites') {
-      navigate('/favorites');
-    }
   };
 
   const handleShowMore = () => {
-    const basePath = pathname.includes('/favorites')
-      ? '/favorites'
-      : '/adverts';
-    navigate(`${basePath}/${_id}`);
     setModalShow(true);
   };
 
@@ -184,12 +179,19 @@ export const AdvertItem = ({
           })}
         </DetailsList>
         <ShowMoreBtn onClick={handleShowMore} />
-        <Modal show={modalShow} onClose={closeModal} id={_id}>
-          <h2>{name}</h2>
-          <p>{description}</p>
-          {/* Інші деталі camper */}
-        </Modal>
       </CardInfoBox>
+      <Modal show={modalShow} onClose={closeModal} id={_id}>
+        <ProductInfo
+          name={name}
+          rating={rating}
+          reviews={reviews}
+          location={location}
+          price={price}
+          gallery={gallery}
+          description={description}
+        />
+        {/* Інші деталі camper */}
+      </Modal>
     </StyledCard>
   );
 };
