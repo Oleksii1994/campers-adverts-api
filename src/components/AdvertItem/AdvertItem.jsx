@@ -61,6 +61,7 @@ export const AdvertItem = ({
 
   const handleShowMore = () => {
     setModalShow(true);
+    console.log(width);
   };
 
   const normalizedInfoDetails = () => {
@@ -74,7 +75,19 @@ export const AdvertItem = ({
     };
   };
 
+  const normalizedDetailsFeatures = () => {
+    return {
+      ...normalizedInfoDetails(),
+      CD: details.CD,
+      radio: details.radio,
+      hob: details.hob,
+      freezer: details.freezer,
+    };
+  };
+
   const detailsArray = Object.entries(normalizedInfoDetails());
+
+  const detailsForFeatures = Object.entries(normalizedDetailsFeatures());
 
   const handleAddRemoveFavorites = _id => {
     const arrayFromLS = JSON.parse(localStorage.getItem('favorites'));
@@ -88,6 +101,13 @@ export const AdvertItem = ({
       reviews,
       location,
       description,
+      children,
+      form,
+      length,
+      width,
+      height,
+      tank,
+      consumption,
       details,
       adults,
       transmission,
@@ -189,8 +209,16 @@ export const AdvertItem = ({
           price={price}
           gallery={gallery}
           description={description}
+          details={detailsForFeatures}
+          itemdetails={{
+            form: form,
+            length: length,
+            width: width,
+            height: height,
+            tank: tank,
+            consumption: consumption,
+          }}
         />
-        {/* Інші деталі camper */}
       </Modal>
     </StyledCard>
   );

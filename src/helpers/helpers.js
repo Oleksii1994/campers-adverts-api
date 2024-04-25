@@ -13,7 +13,12 @@ export const createPrice = price => {
 export const checkDetailsInfo = (key, value) => {
   if (key === 'transmission' || key === 'engine') {
     return `${value}`;
-  } else if (key === 'airConditioner' || key === 'kitchen') {
+  } else if (
+    key === 'airConditioner' ||
+    key === 'kitchen' ||
+    key === 'CD' ||
+    key === 'freezer'
+  ) {
     return `${key}`;
   } else {
     return `${value} ${key}`;

@@ -15,14 +15,14 @@ export const ModalBackdrop = styled.div`
 
 export const ModalContent = styled.div`
   background-color: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 80%; /* Максимальна висота контенту */
-  overflow-y: auto; /* Активуємо прокрутку по вертикалі */
+  max-height: 720px;
+  overflow-y: auto;
   width: 90%;
   max-width: 982px;
-  // min-width: 300px;
+  min-width: 300px;
 `;
 
 export const CloseButton = styled.button`

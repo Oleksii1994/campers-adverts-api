@@ -1,5 +1,8 @@
 import Sprite from '../../img/symbol-defs.svg';
 import { createPrice } from 'helpers/helpers';
+import { useState } from 'react';
+import { CamperReviews } from 'components/CamperReviews/CamperReviews';
+import { CamperFeatures } from 'components/CamperFeatures/CamperFeatures';
 import {
   Gallery,
   Title,
@@ -7,6 +10,9 @@ import {
   FlexContainerSecond,
   Price,
   Descript,
+  FeaturesBtn,
+  BtnList,
+  BtnItem,
 } from './ProductInfo.styled';
 
 export const ProductInfo = ({
@@ -17,7 +23,15 @@ export const ProductInfo = ({
   price,
   gallery,
   description,
+  details,
+  itemdetails,
 }) => {
+  const [isFeatures, setIsFeatures] = useState(true);
+
+  const handleClick = () => {
+    setIsFeatures(!isFeatures);
+  };
+
   return (
     <div>
       <Title>{name}</Title>
@@ -50,6 +64,25 @@ export const ProductInfo = ({
         ))}
       </Gallery>
       <Descript>{description}</Descript>
+      <BtnList>
+        <BtnItem className={isFeatures ? 'btn-active' : ''}>
+          <FeaturesBtn type="button" onClick={handleClick}>
+            Features
+          </FeaturesBtn>
+        </BtnItem>
+        <BtnItem className={!isFeatures ? 'btn-active' : ''}>
+          <FeaturesBtn type="button" onClick={handleClick}>
+            Reviews
+          </FeaturesBtn>
+        </BtnItem>
+      </BtnList>
+      <div>
+        {isFeatures ? (
+          <CamperFeatures details={details} item={itemdetails} />
+        ) : (
+          <CamperReviews reviews={reviews} />
+        )}
+      </div>
     </div>
   );
 };

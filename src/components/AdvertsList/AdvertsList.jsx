@@ -107,6 +107,12 @@ export const AdvertsList = () => {
             adults,
             transmission,
             engine,
+            form,
+            length,
+            width,
+            height,
+            tank,
+            consumption,
           }) => (
             <AdvertItem
               key={_id}
@@ -123,6 +129,12 @@ export const AdvertsList = () => {
               transmission={transmission}
               engine={engine}
               onUpdateFavorites={updateFavorites}
+              form={form}
+              length={length}
+              width={width}
+              height={height}
+              tank={tank}
+              consumption={consumption}
             />
           )
         )}
