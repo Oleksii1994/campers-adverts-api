@@ -15,18 +15,7 @@ import {
 } from './CamperFeatures.styled';
 
 export const CamperFeatures = ({ item, details }) => {
-  // const properties = [
-  //   'form',
-  //   'length',
-  //   'width',
-  //   'height',
-  //   'tank',
-  //   'consumption',
-  // ];
-
   const props = Object.entries(item);
-  // const propsValues = Object.values(item);
-  console.log(props);
 
   return (
     <FeaturesInfoBox>

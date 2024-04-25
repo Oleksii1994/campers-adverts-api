@@ -28,7 +28,6 @@ import {
 } from './AdvertItem.styled';
 import { Modal } from '../ModalInfo/ModalInfo';
 import { ShowMoreBtn } from 'components/ShowMoreBtn/ShowMoreBtn';
-// import { Notify } from 'notiflix';
 
 export const AdvertItem = ({
   _id,
@@ -61,7 +60,6 @@ export const AdvertItem = ({
 
   const handleShowMore = () => {
     setModalShow(true);
-    console.log(width);
   };
 
   const normalizedInfoDetails = () => {

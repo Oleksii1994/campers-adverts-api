@@ -22,11 +22,6 @@ export const AdvertsList = () => {
 
   const adverts = useSelector(selectAdvertsArr);
 
-  // const advertsArr =
-  //   pathname === '/adverts'
-  //     ? adverts
-  //     : JSON.parse(localStorage.getItem('favorites'));
-
   const handleLoadMore = () => {
     const newCount = countData + 4;
     setDataToRender(adverts.slice(0, newCount));

@@ -32,11 +32,3 @@ export const FeaturesInfo = styled.p`
   line-height: 133%;
   text-transform: capitalize;
 `;
-
-/* <InfoList>
-  {propsValues.map((value, index) => (
-    <li key={index}>
-      <FeaturesInfo>{value}</FeaturesInfo>
-    </li>
-  ))}
-</InfoList>; */

@@ -6,10 +6,8 @@ import Sprite from '../../img/symbol-defs.svg';
 export const Modal = ({ show, onClose, children }) => {
   useEffect(() => {
     if (show) {
-      // Додаємо `overflow: hidden` до <body> коли модалка відкрита
       document.body.style.overflow = 'hidden';
     } else {
-      // Видаляємо `overflow: hidden` з <body>, коли модалка закрита
       document.body.style.overflow = 'visible';
     }
 
