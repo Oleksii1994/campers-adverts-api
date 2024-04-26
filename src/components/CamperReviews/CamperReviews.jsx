@@ -1,4 +1,5 @@
 import Sprite from '../../img/symbol-defs.svg';
+import { BookingForm } from 'components/BookForm/BookForm';
 
 export const CamperReviews = ({ reviews }) => {
   const starsPainter = stars => {
@@ -37,6 +38,7 @@ export const CamperReviews = ({ reviews }) => {
           </li>
         ))}
       </ul>
+      <BookingForm />
     </div>
   );
 };

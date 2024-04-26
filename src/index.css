@@ -116,6 +116,8 @@ img {
 }
 
 .reviews-container {
+  display: flex;
+  gap: 24px;
   padding-top: 44px;
 }
 
