@@ -28,18 +28,26 @@ export const Overlay = styled.div`
 `;
 
 export const HeroTitle = styled.h1`
-  font-size: 3.5rem;
+  font-size: 1.5rem;
   font-weight: 300;
   text-align: center;
   margin-bottom: 20px;
+
+  @media (min-width: 480px) {
+    font-size: 3.5rem;
+  }
 `;
 
 export const HeroText = styled.p`
-  font-size: 1.4rem;
+  font-size: 1 rem;
   font-weight: 300;
   text-align: center;
   margin-bottom: 30px;
   max-width: 680px;
+
+  @media (min-width: 480px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const ActionButton = styled(Link)`
