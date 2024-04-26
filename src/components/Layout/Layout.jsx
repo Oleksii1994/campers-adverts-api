@@ -20,7 +20,7 @@ const Layout = () => {
               height="80"
               width="80"
               radius="9"
-              color="#ff00aa7a"
+              color="#e44848"
               ariaLabel="three-dots-loading"
               wrapperStyle={{}}
               wrapperClassName=""

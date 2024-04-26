@@ -6,7 +6,7 @@ import {
   createPrice,
   checkDetailsInfo,
 } from 'helpers/helpers';
-
+import { Notify } from 'notiflix';
 import Sprite from '../../img/symbol-defs.svg';
 import { ProductInfo } from 'components/ProductInfo/ProductInfo';
 import {
@@ -118,14 +118,18 @@ export const AdvertItem = ({
     if (index !== -1) {
       const newArray = arrayFromLS.filter(item => item._id !== advertObj._id);
       localStorage.setItem('favorites', JSON.stringify(newArray));
+
       setIsFavorite(false);
       onUpdateFavorites();
-      return;
-    }
+      Notify.info('Advert was removed from your favorites');
 
-    arrayFromLS.push(advertObj);
-    setIsFavorite(true);
-    localStorage.setItem('favorites', JSON.stringify(arrayFromLS));
+      return;
+    } else {
+      arrayFromLS.push(advertObj);
+      localStorage.setItem('favorites', JSON.stringify(arrayFromLS));
+      setIsFavorite(true);
+      Notify.success('Advert was added to your favorites');
+    }
     onUpdateFavorites();
   };
 
@@ -152,7 +156,11 @@ export const AdvertItem = ({
                 <use
                   className="fav-btn-use"
                   href={`${Sprite}#icon-heart`}
-                  style={{ fill: '#FFFFFF', stroke: '#101828' }}
+                  style={
+                    isFavorite
+                      ? { fill: '#e44848', stroke: 'transparent' } // Червоний колір для улюблених
+                      : { fill: '#FFFFFF', stroke: '#101828' } // Білий колір, якщо не в улюблених
+                  }
                 ></use>
               </svg>
             </FavoritesHeartBtn>
