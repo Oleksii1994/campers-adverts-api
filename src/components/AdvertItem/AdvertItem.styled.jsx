@@ -5,20 +5,38 @@ export const StyledCard = styled.li`
   border-radius: 20px;
   margin-bottom: 32px;
   padding: 24px;
-  width: 888px;
-  height: 358px;
+  width: 340px;
+  min-height: 358px;
+  position: relative;
 
-  display: flex;
-  justify-content: space-between;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    width: 760px;
+    gap: 16px;
+  }
+
+  @media (min-width: 908px) {
+    width: 888px;
+    justify-content: space-between;
+  }
 `;
 
 export const CardInfoBox = styled.div`
-  width: 526px;
+  width: 294px;
+  @media (min-width: 768px) {
+    width: 526px;
+  }
 `;
 
 export const CardPhoto = styled.img`
+  margin-bottom: 20px;
   height: 310px;
   object-fit: cover;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const CardTitle = styled.h2`
@@ -30,14 +48,29 @@ export const CardTitle = styled.h2`
 export const PriceWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  @media (min-width: 908px) {
+    align-items: center;
+  }
 `;
 
 export const TitlePriceBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 20px;
 
-  margin-bottom: 8px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
 `;
 
 export const Price = styled.p`
@@ -54,6 +87,13 @@ export const FavoritesHeartBtn = styled.button`
   align-items: center;
 
   cursor: pointer;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+
+  @media (min-width: 768px) {
+    position: static;
+  }
 `;
 
 export const RatingLocationWrapper = styled.div`
@@ -97,7 +137,7 @@ export const DetailItem = styled.li`
 
   border-radius: 100px;
   padding: 12px 18px;
-  // width: 143px;
+
   height: 44px;
 
   background-color: #f2f4f7;

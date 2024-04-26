@@ -2,12 +2,23 @@ import styled from 'styled-components';
 
 export const FeaturesContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 24px;
   padding-top: 44px;
+  width: 100%;
+  align-items: flex-start;
+
+  @media (min-width: 1060px) {
+    flex-direction: row;
+  }
 `;
 
 export const FeaturesInfoBox = styled.div`
-  width: 448px;
+  width: 100%;
+
+  // @media (min-width: 768px) {
+  //   width: 430px;
+  // }
 `;
 
 export const Title = styled.h2`
@@ -22,6 +33,12 @@ export const DetailsList = styled.ul`
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 44px;
+
+  width: 100%;
+
+  // @media (min-width: 768px) {
+  //   width: 430px;
+  // }
 `;
 
 export const InfoList = styled.ul`
@@ -30,6 +47,11 @@ export const InfoList = styled.ul`
   flex-direction: column;
   padding-top: 24px;
   border-top: 1px solid rgba(16, 24, 40, 0.1);
+  width: 100%;
+
+  // @media (min-width: 768px) {
+  //   width: 430px;
+  // }
 `;
 
 export const FeaturesInfo = styled.p`

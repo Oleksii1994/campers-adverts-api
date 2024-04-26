@@ -5,7 +5,12 @@ export const FormContainer = styled.div`
   border: 1px solid #10182820;
   border-radius: 10px;
   height: fit-content;
-  width: 448px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 420px;
+    align-self: center;
+  }
 `;
 
 export const FormHeading = styled.div`
