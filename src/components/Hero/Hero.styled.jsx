@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import heroImage from '../../img/hero-img.jpg';
+import heroImage from '../../img/hero.jpg';
 import styled from 'styled-components';
 
 // Стилізовані компоненти
@@ -8,7 +8,7 @@ export const HeroContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 92vh;
+  height: 93vh;
   background-image: url(${heroImage});
 
   background-size: cover;
